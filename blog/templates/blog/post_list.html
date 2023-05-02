@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %}Posts{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+
+<div class=" col-sm-10 carousel slide" id="carouselExampleInterval" data-bs-ride="carousel"> <!--debut carousel-->
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="10000">
+      <img src="{% static 'img/img1.png' %}" class="d-block w-100 img-fluid" alt="...">
+    </div>
+    <div class="carousel-item" data-bs-interval="10000">
+      <img src="{% static 'img/img2.png' %}" class="d-block w-100 img-fluid" alt="...">
+    </div>
+    <div class="carousel-item" data-bs-interval="10000">
+      <img src="{% static 'img/img3.png' %}" class="d-block w-100 img-fluid" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div> <!--fin caroussel-->
+
+
+    <div class="col-sm-2 ">
+        <h5>Catégories</h5>
+        <hr>
+        <ul class="list-unstyled">
+            {% for cat in categories %}
+                <li>
+                    <a href="{% url 'post-list' cat.slug %}" class="badge bg-secondary text-white">
+                        {{ cat.name|capfirst }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+<div class="row">
+<div class="col-sm-12 mb-20">
+
+</div>
+</div>
+    {# Injection List des posts #}
+    {% for post in posts %}
+        <div class="row">
+            <div class="col-sm-2 col-12">
+                <img src="{{post.illustration.url}}" class="img-fluid float-end rounded mx-auto d-block "  height="100" width="120">
+            </div>
+            <div class="col-sm-10 mb-4">
+                <h4> <a href="{% url 'post-detail' post.pk %}"> {{ post.title }}</a></h4>
+                <small>{{ post.created_at }}</small>
+                <hr>
+                <p class="text-muted">
+                    {{ post.text|linebreaks|safe|truncatewords:50 }}
+                    <a href="{% url 'post-detail' post.pk %}">[Read more]</a>
+                </p>
+
+                <a href="{% url 'post-list' post.category.slug %}" class="badge bg-secondary text-white">
+                {{ post.category.name|capfirst }}
+                </a>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    {# Categorie inexistante #}
+    {% empty %}
+        <div class="text-center">
+        <p class="display-1"> :-(</p>
+        <h3 class="mt-4">
+            Désolé, pas de posts pour la catégorie <span class="badge bg-info text-white"> {{ category.name }}</span>
+        </h3>
+
+        </div>
+
+    {% endfor %}
+
+{% endblock content %}

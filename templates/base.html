@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--Chargement des fichiers statics -->
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ecodeviews - {% block title %} {% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- font asesome 6 cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css">
+</head>
+<body>
+<!--<div class="container-fluid">-->
+<nav class="navbar navbar-dark navbar-expand-md sticky-top" style="background-color: #393738;">
+   <div class="container-fluid">
+       <a class="navbar-brand" href="{% url 'home' %}">
+           <img src="{% static 'img/ecodeviews.png' %}" alt="" width="30" height="24" style="background-color: white;">
+           EcoDeviews
+       </a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+            <span class="navbar-toggler-icon"> </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% for item in navigation_items %}
+                <li class="nav-item">
+                    <a class="nav-link {% if item.active %}active{% endif %}" aria-current="page" href="{{ item.url }} ">
+                        {{ item.name }}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+
+            <a class="btn btn-info fa-brands fa-twitter text-white " href="https://twitter.com/Ecodeviews" style="margin-right: 10px"></a>
+            <a class="btn btn-primary fa-brands fa-facebook link-light" href="https://www.facebook.com/ecodeviews" style="margin-right: 10px"></a>
+            <a class="btn btn-danger fa-brands fa-instagram  link-light" href="https://www.instagram.com/ecodeviews/" style="margin-right: 10px"></a>
+
+            <!--<form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+                <button class="btn btn-outline-light " type="submit">Search</button>
+            </form>-->
+        </div>
+   </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row mt-4">
+        {% block content %} Please Override this Block! {% endblock %}
+
+    </div>
+</div>
+
+
+<!-- Footer Section -->
+<footer class="bg-light text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>&copy; 2023 EcoDeviews. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+ <!--</div>fin container glogal -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About{% endblock %}
+
+
+{% block content %}
+    <div class="col-12">
+        <h3> EcoDeviews, <small class="text-muted">réfléchir c'est agir.</small></h3>
+        <hr>
+        <div class="row">
+            <div class="col-md-8">
+                <p class="lead text-justify">
+                    Forme contractée de <span class="fst-italic"> Economic Development views</span>, EcoDeviews est une
+                    plateforme dédiée à l'analyse des économies africaines. Il puise ses ressources dans la recherche
+                    universitaire et scientifique proposée par l'économie du développement. L'économie du développement
+                    est une branche des sciences économiques et sociales qui s’occupe de proposer des analyses
+                    économiques méthodiques sur des pays où sont présentes certaines caractéristiques (pauvreté,
+                    inégalité, vulnérabilité aux chocs économiques et climatiques, etc).
+                </p>
+            </div>
+            <div class="col-md-3">
+                <img src="{% static 'img/ecodeviews.png' %}" class="img-fluid">
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- vision -->
+    <div class="row">
+        <div class="col-12">
+            <h4>Notre vision</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <p class="lead">
+                La vision de EcoDeviews est de permettre aux acteurs les plus concernés de s'approprier le débat et de
+                penser le développement par soi-même. La représentation des réalités du continent africain dans son
+                développement, à la lumière des théories scientifiques, permet d'insuffler une véritable prise de
+                conscience de tous les acteurs. Réfléchir c'est donc agir avec discernement.
+
+            </p>
+        </div>
+    </div>
+
+
+{% endblock %}
