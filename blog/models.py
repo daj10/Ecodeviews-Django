@@ -22,7 +22,7 @@ class Post(models.Model):
                                  on_delete=models.DO_NOTHING)
     redactor = models.ForeignKey('Redactor',
                                  on_delete=models.DO_NOTHING)
-    illustration = models.ImageField(upload_to='upload/', blank=True)
+    illustration = models.ImageField(upload_to='upload/', blank=True, null=True)
     published = models.BooleanField(default=False)
     text = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
