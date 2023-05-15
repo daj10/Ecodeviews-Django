@@ -5,11 +5,14 @@ from django.db import models
 from blog.models import PostCategory, Post, Comment, Redactor
 
 # Ecodeviews own admin site page
+
+'''
 class EcodeviewsAdminSite(admin.AdminSite):
     site_header = 'Ecodeviews Administration'
 
 
 admin_site = EcodeviewsAdminSite(name='admin')
+'''
 
 
 @admin.register(PostCategory)
